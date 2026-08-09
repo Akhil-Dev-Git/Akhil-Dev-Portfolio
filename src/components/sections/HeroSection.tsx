@@ -211,8 +211,9 @@ export default function HeroSection() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(255,122,0,0.15)_0%,transparent_70%)] blur-2xl z-0 pointer-events-none" />
           
           <motion.div
-            className="relative z-10 w-[85%] lg:w-[80%] aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-glass-border grayscale hover:grayscale-0 transition-all duration-700 group"
+            className="relative z-10 w-[85%] lg:w-[80%] aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-glass-border grayscale-0 md:grayscale hover:grayscale-0 transition-all duration-700 group"
             animate={{ y: [0, -15, 0] }}
+            whileTap={{ scale: 0.95, rotate: -2 }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
             {/* Fallback styling in case image doesn't exist yet */}
@@ -224,7 +225,7 @@ export default function HeroSection() {
               src="/portrait.jpg" 
               alt="Akhil Dev Portrait" 
               fill
-              className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700" 
+              className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-normal md:mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700" 
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}

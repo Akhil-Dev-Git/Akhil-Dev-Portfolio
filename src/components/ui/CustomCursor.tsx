@@ -9,12 +9,22 @@ export default function CustomCursor() {
   const cursorY = useMotionValue(-100);
   
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+    const moveCursor = (e: MouseEvent | TouchEvent) => {
+      let clientX, clientY;
+      
+      if ('touches' in e) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+      
+      cursorX.set(clientX);
+      cursorY.set(clientY);
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
+    const handleMouseOver = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLElement;
       if (
         target.tagName.toLowerCase() === "button" ||
@@ -31,10 +41,14 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", moveCursor);
     window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("touchmove", moveCursor);
+    window.addEventListener("touchstart", moveCursor);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("touchmove", moveCursor);
+      window.removeEventListener("touchstart", moveCursor);
     };
   }, [cursorX, cursorY]);
 
