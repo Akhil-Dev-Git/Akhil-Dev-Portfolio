@@ -154,7 +154,7 @@ export default function ContactSection() {
           <motion.div 
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-bold w-fit mb-8"
           >
@@ -165,7 +165,7 @@ export default function ContactSection() {
           <motion.h2 
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold font-heading text-white mb-6"
           >
@@ -178,7 +178,7 @@ export default function ContactSection() {
           <motion.p
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
             className="text-text-secondary text-lg mb-12 max-w-md"
           >
@@ -200,7 +200,7 @@ export default function ContactSection() {
           <motion.div 
             initial={{ opacity: 0, x: -100, scale: 0.9 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 }}
             className="relative w-full h-[300px] rounded-3xl overflow-hidden bg-surface border border-glass-border"
           >
@@ -217,7 +217,7 @@ export default function ContactSection() {
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, margin: "-50px" }}
+          viewport={{ once: false, margin: "0px" }}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
           className="flex flex-col gap-6"
         >

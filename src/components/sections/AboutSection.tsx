@@ -58,7 +58,7 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             className="text-text-secondary text-lg md:text-xl leading-relaxed space-y-6"
           >
@@ -88,7 +88,7 @@ export default function AboutSection() {
             <motion.h3 
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
               className="text-3xl md:text-4xl font-heading font-black mb-12 text-transparent bg-clip-text bg-gradient-to-r from-accent to-white"
             >
@@ -100,7 +100,7 @@ export default function AboutSection() {
                   key={index}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, margin: "-50px" }}
+                  viewport={{ once: false, margin: "0px" }}
                   transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.05 }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active py-4"
                 >
@@ -125,7 +125,7 @@ export default function AboutSection() {
             <motion.h3 
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
               className="text-3xl md:text-4xl font-heading font-black mb-12 text-transparent bg-clip-text bg-gradient-to-r from-accent to-white"
             >
@@ -137,7 +137,7 @@ export default function AboutSection() {
                   key={index}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, margin: "-50px" }}
+                  viewport={{ once: false, margin: "0px" }}
                   transition={{ duration: 0.4, ease: "easeOut", delay: (index % 5) * 0.05 }}
                   className="p-6 rounded-2xl bg-surface border border-glass-border hover:border-accent/50 hover:bg-cards transition-all duration-300 group flex items-start gap-6"
                 >

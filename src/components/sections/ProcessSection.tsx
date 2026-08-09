@@ -39,7 +39,7 @@ export default function ProcessSection() {
           <motion.h2 
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-4xl md:text-5xl font-bold font-heading mb-6 text-white"
           >
@@ -48,7 +48,7 @@ export default function ProcessSection() {
           <motion.p 
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             className="text-text-secondary text-lg max-w-2xl mx-auto font-light"
           >
@@ -63,7 +63,7 @@ export default function ProcessSection() {
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
               transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.05 }}
               className="relative p-8 rounded-3xl bg-surface border border-glass-border hover:border-accent/50 hover:bg-cards transition-all duration-300 group overflow-hidden"
             >

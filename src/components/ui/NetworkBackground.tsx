@@ -30,6 +30,11 @@ export default function NetworkBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    if (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches) {
+      // Disable this heavy background effect on mobile devices to prevent severe lag
+      return;
+    }
+
     let width = window.innerWidth;
     let height = window.innerHeight;
     

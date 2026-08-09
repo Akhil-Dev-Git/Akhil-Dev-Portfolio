@@ -64,7 +64,7 @@ export function TextReveal({
         variants={container}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, margin: "0px" }}
         className="inline-block"
       >
         {text.split(" ").map((word, wordIndex, wordsArray) => (

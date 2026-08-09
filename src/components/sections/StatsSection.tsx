@@ -14,7 +14,7 @@ const stats = [
 
 function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number, to: number, duration?: number, suffix?: string }) {
   const nodeRef = useRef<HTMLSpanElement>(null);
-  const inView = useInView(nodeRef, { once: true, margin: "-100px" });
+  const inView = useInView(nodeRef, { once: true, margin: "0px" });
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {

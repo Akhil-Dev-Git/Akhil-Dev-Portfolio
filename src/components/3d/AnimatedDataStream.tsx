@@ -12,6 +12,11 @@ export default function AnimatedDataStream() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    if (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches) {
+      // Disable this heavy background effect on mobile devices to prevent severe lag
+      return;
+    }
+
     let animationFrameId: number;
     let width = 0;
     let height = 0;

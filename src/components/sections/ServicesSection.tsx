@@ -31,7 +31,7 @@ export default function ServicesSection() {
             <motion.h2 
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6 text-white"
             >
@@ -43,7 +43,7 @@ export default function ServicesSection() {
             <motion.p
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
               transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
               className="text-text-secondary text-lg"
             >
@@ -53,7 +53,7 @@ export default function ServicesSection() {
           <motion.div
             initial={{ opacity: 0, x: 100, scale: 0.9 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
           >
             <a href="#contact" className="inline-block border-b border-accent text-white font-medium pb-1 hover:text-accent transition-colors">
@@ -68,7 +68,7 @@ export default function ServicesSection() {
               key={service.name}
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
               transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.05 }}
               className="group p-6 rounded-2xl bg-surface border border-glass-border hover:border-accent/40 hover:bg-cards transition-all duration-300 relative overflow-hidden flex flex-col items-center text-center gap-4"
             >
@@ -89,7 +89,7 @@ export default function ServicesSection() {
             href="#contact"
             initial={{ opacity: 0, x: services.length % 2 === 0 ? -100 : 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: services.length * 0.05 }}
             className="group p-6 rounded-2xl bg-gradient-to-br from-accent to-accent-secondary border border-accent/50 hover:shadow-[0_0_30px_rgba(255,122,0,0.4)] transition-all duration-300 flex flex-col items-center justify-center text-center gap-4 min-h-[160px]"
           >

@@ -32,7 +32,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         <motion.div 
           initial={{ opacity: 0, x: index % 2 === 1 ? 50 : -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full lg:w-3/5 relative"
         >
@@ -57,7 +57,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         <motion.div 
           initial={{ opacity: 0, x: index % 2 === 1 ? -50 : 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full lg:w-2/5 flex flex-col"
         >

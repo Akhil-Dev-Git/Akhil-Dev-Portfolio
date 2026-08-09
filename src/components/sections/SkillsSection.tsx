@@ -40,7 +40,7 @@ export default function SkillsSection() {
           <motion.h2 
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-4xl md:text-5xl font-bold font-heading mb-4 text-white"
           >
@@ -49,7 +49,7 @@ export default function SkillsSection() {
           <motion.p
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             className="text-text-muted text-lg max-w-2xl mx-auto"
           >
@@ -63,7 +63,7 @@ export default function SkillsSection() {
               key={category.title}
               initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
               transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.05 }}
               className={`p-6 md:p-8 rounded-3xl bg-cards border border-glass-border hover:border-accent/30 transition-all duration-300 group hover:shadow-[0_0_30px_rgba(255,122,0,0.1)] ${
                 idx === skillCategories.length - 1 && skillCategories.length % 3 !== 0

@@ -138,7 +138,7 @@ export default function ProjectsSection() {
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: false, margin: "0px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
             className="text-text-secondary text-lg max-w-2xl"
           >
@@ -152,7 +152,7 @@ export default function ProjectsSection() {
               key={project.id}
               initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
+              viewport={{ once: false, margin: "0px" }}
               transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.05 }}
             >
               <button
