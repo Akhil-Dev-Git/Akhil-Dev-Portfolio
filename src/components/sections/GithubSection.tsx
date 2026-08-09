@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Star, GitFork, GitCommit, GitPullRequest } from "lucide-react";
+import { Star, GitFork, GitCommit } from "lucide-react";
 import { GithubIcon as Github } from "../ui/Icons";
 
 // In a real application, you'd fetch this from the GitHub API using a server component or API route.

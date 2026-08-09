@@ -15,6 +15,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any);
 
     // Force scroll to top on reload, overriding browser defaults

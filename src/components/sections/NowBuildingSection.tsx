@@ -150,7 +150,7 @@ export default function NowBuildingSection() {
                   Actively looking for roles where I can architect and build AI-driven products.
                 </p>
                 <a href="#contact" className="inline-block px-6 py-3 text-sm font-bold text-background bg-accent rounded-full hover:bg-accent-secondary transition-colors uppercase tracking-wider">
-                  Let's Talk
+                  Let&apos;s Talk
                 </a>
               </div>
             </motion.div>

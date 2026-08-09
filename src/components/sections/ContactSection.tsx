@@ -76,9 +76,8 @@ function AlgorithmicNetwork() {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
+            args={[positions, 3]}
             count={positions.length / 3}
-            array={positions}
-            itemSize={3}
           />
         </bufferGeometry>
         <pointsMaterial size={0.04} color="#FF7A00" transparent opacity={0.9} sizeAttenuation />
@@ -89,15 +88,13 @@ function AlgorithmicNetwork() {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
+            args={[positions, 3]}
             count={positions.length / 3}
-            array={positions}
-            itemSize={3}
           />
           <bufferAttribute
             attach="index"
+            args={[lines, 1]}
             count={lines.length}
-            array={lines}
-            itemSize={1}
           />
         </bufferGeometry>
         <lineBasicMaterial color="#FF7A00" transparent opacity={0.15} />
@@ -121,6 +118,7 @@ export default function ContactSection() {
   const [time, setTime] = useState<Date | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTime(new Date());
     const interval = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(interval);
@@ -171,7 +169,7 @@ export default function ContactSection() {
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold font-heading text-white mb-6"
           >
-            Let's Build <br />
+            Let&apos;s Build <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary">
               Something Extraordinary.
             </span>

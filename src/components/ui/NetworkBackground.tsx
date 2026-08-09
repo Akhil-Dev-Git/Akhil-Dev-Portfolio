@@ -44,7 +44,7 @@ export default function NetworkBackground() {
     window.addEventListener("resize", setCanvasSize);
 
     // Mouse interaction
-    let mouse = { x: -1000, y: -1000, radius: 150 };
+    const mouse = { x: -1000, y: -1000, radius: 250 };
 
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
@@ -104,17 +104,27 @@ export default function NetworkBackground() {
         if (hub.x < 0 || hub.x > width) hub.vx *= -1;
         if (hub.y < 0 || hub.y > height) hub.vy *= -1;
 
-        // Mouse repulsion for hubs
+        // Mouse magnetic attraction & connecting lines
         const dx = mouse.x - hub.x;
         const dy = mouse.y - hub.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < mouse.radius) {
+          // Attract towards mouse
           const forceDirectionX = dx / distance;
           const forceDirectionY = dy / distance;
+          // Easing force
           const force = (mouse.radius - distance) / mouse.radius;
-          hub.x -= forceDirectionX * force * 2;
-          hub.y -= forceDirectionY * force * 2;
+          hub.x += forceDirectionX * force * 1.5;
+          hub.y += forceDirectionY * force * 1.5;
+
+          // Draw laser line to mouse
+          ctx.beginPath();
+          ctx.moveTo(hub.x, hub.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(255, 122, 0, ${force * 0.4})`; // Accent orange color
+          ctx.lineWidth = 1;
+          ctx.stroke();
         }
 
         // Draw hub

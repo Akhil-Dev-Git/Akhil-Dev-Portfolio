@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import MagneticButton from "../ui/MagneticButton";
@@ -83,7 +83,7 @@ export default function Navbar() {
             href="mailto:akhildev6281@gmail.com"
             className="px-5 py-2 text-sm font-bold text-white transition-all rounded-full bg-accent border border-accent hover:bg-accent-secondary hover:shadow-[0_0_20px_rgba(255,122,0,0.4)] tracking-wide uppercase"
           >
-            Hire Me
+            Mail Me
           </a>
         </MagneticButton>
       </div>

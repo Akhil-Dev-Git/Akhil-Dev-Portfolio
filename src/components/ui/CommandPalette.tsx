@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Home, User, Code, Briefcase, FileText, Mail, Command, X } from "lucide-react";
+import { Search, Home, User, Code, Briefcase, FileText, Mail, X } from "lucide-react";
 import { GithubIcon as Github, LinkedinIcon as Linkedin } from "./Icons";
 import { useRouter } from "next/navigation";
 
@@ -122,7 +122,7 @@ export default function CommandPalette() {
               <div className="max-h-[60vh] overflow-y-auto p-2 no-scrollbar">
                 {filteredCommands.length === 0 ? (
                   <div className="py-12 text-center text-text-muted">
-                    <p>No results found for "{search}"</p>
+                    <p>No results found for &quot;{search}&quot;</p>
                   </div>
                 ) : (
                   sections.map((section) => (

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 export interface Service {
-  icon: any; // Type as needed based on lucide-react exports
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; // Type for lucide-react icons
   name: string;
   desc: string;
 }

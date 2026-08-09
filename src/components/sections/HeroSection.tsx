@@ -3,11 +3,13 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Particles from "../3d/Particles";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import MagneticButton from "../ui/MagneticButton";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FileText, ArrowRight, Mail } from "lucide-react";
 import { GithubIcon as Github, LinkedinIcon as Linkedin, UpworkIcon as Upwork } from "../ui/Icons";
+import { TextReveal } from "../ui/TextReveal";
+import Image from "next/image";
 
 const TITLES = [
   "AI Engineer",
@@ -16,7 +18,7 @@ const TITLES = [
   "AI Automation Engineer"
 ];
 
-const leftVariants = {
+const leftVariants: Variants = {
   hidden: { 
     opacity: 0, 
     x: -150, 
@@ -29,7 +31,7 @@ const leftVariants = {
   })
 };
 
-const rightVariants = {
+const rightVariants: Variants = {
   hidden: { 
     opacity: 0, 
     x: 150, 
@@ -47,6 +49,16 @@ const rightVariants = {
 
 export default function HeroSection() {
   const [titleIndex, setTitleIndex] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax effects based on scroll
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const yText = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,9 +68,9 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center bg-transparent">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-40">
+    <section ref={containerRef} id="home" className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center bg-transparent">
+      {/* 3D Background with Parallax */}
+      <motion.div style={{ y: yBg }} className="absolute inset-0 z-0 opacity-40">
         <Canvas camera={{ position: [0, 0, 10], fov: 75 }}>
           <ambientLight intensity={0.2} />
           {/* Orange rim light effect */}
@@ -67,12 +79,15 @@ export default function HeroSection() {
           <Particles count={400} />
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.3} />
         </Canvas>
-      </div>
+      </motion.div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 pt-24 pb-12">
         
         {/* Left Column: Text & Buttons */}
-        <div className="flex flex-col items-start text-left order-2 lg:order-1">
+        <motion.div 
+          style={{ y: yText, opacity }}
+          className="flex flex-col items-start text-left order-2 lg:order-1"
+        >
           
           <motion.div
             custom={1}
@@ -83,22 +98,13 @@ export default function HeroSection() {
             className="mb-2"
           >
             <span className="text-text-muted font-mono tracking-wider text-sm md:text-base uppercase">
-              Hello, I'm
+              Hello, I&apos;m
             </span>
           </motion.div>
 
-          <motion.div
-            custom={2}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, margin: "0px" }}
-            variants={leftVariants}
-            className="mb-4"
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-heading text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-              AKHIL DEV
-            </h1>
-          </motion.div>
+          <div className="mb-4 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-heading text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            <TextReveal text="AKHIL DEV" delay={0.2} stagger={0.05} />
+          </div>
 
           <motion.div
             custom={3}
@@ -122,7 +128,7 @@ export default function HeroSection() {
             className="mb-8 pl-4 border-l-2 border-accent/50"
           >
             <p className="text-lg md:text-2xl text-white font-medium italic font-heading">
-              "Architecting Intelligent Digital Experiences."
+              &quot;Architecting Intelligent Digital Experiences.&quot;
             </p>
           </motion.div>
 
@@ -150,7 +156,7 @@ export default function HeroSection() {
             <MagneticButton>
               <a href="#contact" className="flex items-center gap-2 px-8 py-4 text-sm font-bold text-white transition-all rounded-full bg-accent hover:bg-accent-secondary shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_40px_rgba(255,122,0,0.5)] uppercase tracking-wider">
                 <Mail className="w-4 h-4" />
-                Hire Me
+                Mail Me
               </a>
             </MagneticButton>
             
@@ -191,7 +197,7 @@ export default function HeroSection() {
               </a>
             </MagneticButton>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Portrait */}
         <motion.div
@@ -214,9 +220,10 @@ export default function HeroSection() {
               {/* Removed fallback text to prevent it showing through the image */}
             </div>
             
-            <img 
+            <Image 
               src="/portrait.jpg" 
               alt="Akhil Dev Portrait" 
+              fill
               className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700" 
               onError={(e) => {
                 e.currentTarget.style.display = 'none';

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ChevronRight, X } from "lucide-react";
 import { GithubIcon as Github } from "../ui/Icons";
+import { TextReveal } from "../ui/TextReveal";
 
 // Mock data based on blueprint. In a real app, this would be more detailed.
 const projects = [
@@ -101,6 +102,14 @@ const projects = [
 
 export default function ProjectsSection() {
   const [activeProject, setActiveProject] = useState<typeof projects[0] | null>(null);
+  
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const yTitle = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   useEffect(() => {
     if (activeProject) {
@@ -114,32 +123,28 @@ export default function ProjectsSection() {
   }, [activeProject]);
 
   return (
-    <section id="projects" className="w-full py-32 bg-transparent relative border-t border-glass-border min-h-screen">
+    <section ref={containerRef} id="projects" className="w-full py-32 bg-transparent relative border-t border-glass-border min-h-screen">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        <div className="mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-bold font-heading mb-6 text-white"
-          >
-            Engineering <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary">
-              Case Studies.
-            </span>
-          </motion.h2>
+        <motion.div style={{ y: yTitle }} className="mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold font-heading mb-6 text-white">
+            <TextReveal text="Engineering" delay={0.1} /> <br />
+            <TextReveal 
+              text="Case Studies." 
+              delay={0.4} 
+              className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary"
+            />
+          </h2>
           <motion.p
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
             className="text-text-secondary text-lg max-w-2xl"
           >
             Deep dives into architecture, challenges, and results. Not just what I built, but how and why.
           </motion.p>
-        </div>
+        </motion.div>
 
         <div className="space-y-6">
           {projects.map((project, idx) => (
@@ -205,10 +210,31 @@ export default function ProjectsSection() {
               className="relative w-full max-w-5xl max-h-[90vh] bg-surface border border-glass-border rounded-3xl overflow-y-auto no-scrollbar shadow-2xl flex flex-col"
               data-lenis-prevent="true"
             >
-              {/* Header Image Area */}
+              {/* Header Image Area with Wipe Reveal */}
               <div className="relative h-64 md:h-80 bg-cards border-b border-glass-border overflow-hidden shrink-0 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10" />
-                <div className="absolute inset-0 bg-accent/5" />
+                {/* Image Wipe Animation */}
+                <motion.div
+                  initial={{ width: "100%" }}
+                  animate={{ width: "0%" }}
+                  transition={{ duration: 0.8, ease: [0.65, 0, 0.35, 1], delay: 0.3 }}
+                  className="absolute top-0 right-0 bottom-0 bg-accent z-40"
+                />
+                
+                {/* Simulated Image Scale Down */}
+                <motion.div
+                  initial={{ scale: 1.2 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                  className="absolute inset-0 bg-accent/5"
+                  style={{
+                    backgroundImage: `url(${activeProject.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent z-10" />
+                
                 <h2 className="relative z-20 text-4xl md:text-6xl font-bold font-heading text-white text-center px-6">
                   {activeProject.name}
                 </h2>

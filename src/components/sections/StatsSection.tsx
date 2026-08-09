@@ -37,6 +37,7 @@ function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number, t
       };
       
       requestAnimationFrame(animate);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHasAnimated(true);
     }
   }, [inView, from, to, duration, suffix, hasAnimated]);

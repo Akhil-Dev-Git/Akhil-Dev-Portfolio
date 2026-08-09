@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Brain, Cpu, Rocket, Target, Zap, Sparkles, Shield, Activity, Infinity, Layers } from "lucide-react";
+import { useRef } from "react";
+import { TextReveal } from "../ui/TextReveal";
 
 const timeline = [
   { year: "2023", title: "Started AI & DS", description: "Began my journey into data science, analyzing complex datasets and building foundational statistical models." },
@@ -27,28 +29,34 @@ const values = [
 ];
 
 export default function AboutSection() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
-    <section id="about" className="relative w-full py-32 bg-transparent overflow-hidden border-t border-glass-border">
+    <section ref={containerRef} id="about" className="relative w-full py-32 bg-transparent overflow-hidden border-t border-glass-border">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-[500px] bg-accent-secondary/5 rounded-full blur-[150px] pointer-events-none" />
+      <motion.div style={{ y: y1 }} className="absolute top-0 right-0 w-1/3 h-[500px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+      <motion.div style={{ y: y2 }} className="absolute bottom-0 left-0 w-1/3 h-[500px] bg-accent-secondary/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header / About Me - Full Viewport Height */}
-        <div className="min-h-[90vh] flex flex-col justify-center mb-32 md:w-4/5">
-          <motion.h2 
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading mb-8 text-white"
-          >
-            The Journey of <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary">
-              Engineering Intelligence.
-            </span>
-          </motion.h2>
+        <motion.div style={{ y: y3 }} className="min-h-[90vh] flex flex-col justify-center mb-32 md:w-4/5">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading mb-8 text-white">
+            <TextReveal text="The Journey of" delay={0.1} /> <br />
+            <TextReveal 
+              text="Engineering Intelligence." 
+              delay={0.4} 
+              className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary" 
+            />
+          </h2>
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -60,10 +68,10 @@ export default function AboutSection() {
               I am an AI Engineer and Full Stack Developer driven by a singular goal: building intelligent systems that feel indistinguishable from magic. My journey began with a deep fascination for data science, which quickly evolved into a specialized focus on artificial intelligence and modern web architecture.
             </p>
             <p>
-              I don't just train models in isolated notebooks. I architect end-to-end solutions—from engineering resilient backend pipelines and orchestrating autonomous AI agents, to crafting pixel-perfect, luxury frontend experiences that users love to interact with.
+              I don&apos;t just train models in isolated notebooks. I architect end-to-end solutions—from engineering resilient backend pipelines and orchestrating autonomous AI agents, to crafting pixel-perfect, luxury frontend experiences that users love to interact with.
             </p>
             <p>
-              Whether it's developing real-time computer vision systems, fine-tuning large language models for enterprise automation, or building highly responsive Next.js applications, I approach every project with an uncompromising commitment to engineering excellence and aesthetic design.
+              Whether it&apos;s developing real-time computer vision systems, fine-tuning large language models for enterprise automation, or building highly responsive Next.js applications, I approach every project with an uncompromising commitment to engineering excellence and aesthetic design.
             </p>
             <p>
               My technical approach is deeply rooted in performance and scalability. I build robust backend orchestrations that seamlessly process complex AI tasks, while ensuring the frontend remains blazingly fast. From deploying microservices to crafting fluid, physics-based UI animations, I believe great engineering should be invisible to the user.
@@ -72,10 +80,10 @@ export default function AboutSection() {
               Beyond code, I am a product thinker. I continuously analyze how users interact with artificial intelligence, iterating on user experiences to eliminate friction. My goal is to build tools that amplify human potential, giving creators and businesses the leverage they need to innovate faster.
             </p>
             <p className="text-white font-medium border-l-2 border-accent pl-6 py-2 italic mt-8 text-xl">
-              "For me, technology is a tool to solve human problems. I thrive at the intersection of research and production, turning complex algorithms into seamless, intuitive products."
+              &quot;For me, technology is a tool to solve human problems. I thrive at the intersection of research and production, turning complex algorithms into seamless, intuitive products.&quot;
             </p>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="mb-32">
