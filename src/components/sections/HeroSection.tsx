@@ -213,7 +213,12 @@ export default function HeroSection() {
           <motion.div
             className="relative z-10 w-[85%] lg:w-[80%] aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-glass-border grayscale-0 md:grayscale hover:grayscale-0 transition-all duration-700 group"
             animate={{ y: [0, -15, 0] }}
-            whileTap={{ scale: 0.95, rotate: -2 }}
+            whileTap={{ 
+              scale: 0.95, 
+              rotate: -2, 
+              boxShadow: "0px 0px 80px rgba(255, 122, 0, 0.8)",
+              borderColor: "rgba(255, 122, 0, 0.5)"
+            }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
             {/* Fallback styling in case image doesn't exist yet */}
