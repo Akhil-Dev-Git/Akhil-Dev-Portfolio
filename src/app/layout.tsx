@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import AppWrapper from "@/components/layout/AppWrapper";
 import AnimatedDataStream from "@/components/3d/AnimatedDataStream";
+import SecurityWrapper from "@/components/layout/SecurityWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,13 +39,15 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable} antialiased dark`}
     >
       <body className="bg-background text-text-primary selection:bg-hover-glow selection:text-white overflow-x-hidden w-full relative">
-        <AnimatedDataStream />
-        <CustomCursor />
-        <SmoothScroll>
-          <AppWrapper>
-            {children}
-          </AppWrapper>
-        </SmoothScroll>
+        <SecurityWrapper>
+          <AnimatedDataStream />
+          <CustomCursor />
+          <SmoothScroll>
+            <AppWrapper>
+              {children}
+            </AppWrapper>
+          </SmoothScroll>
+        </SecurityWrapper>
       </body>
     </html>
   );

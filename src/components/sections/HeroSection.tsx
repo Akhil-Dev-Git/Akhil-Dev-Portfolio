@@ -243,7 +243,7 @@ export default function HeroSection() {
               src="/portrait.jpg" 
               alt="Akhil Dev Portrait" 
               fill
-              className={`absolute inset-0 w-full h-full object-cover opacity-80 transition-all duration-700 ${isPhotoTouched ? 'mix-blend-normal' : 'mix-blend-luminosity group-hover:mix-blend-normal'}`} 
+              className={`absolute inset-0 w-full h-full object-cover opacity-80 transition-all duration-700 pointer-events-none select-none [-webkit-user-drag:none] ${isPhotoTouched ? 'mix-blend-normal' : 'mix-blend-luminosity group-hover:mix-blend-normal'}`} 
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
