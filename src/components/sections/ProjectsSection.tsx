@@ -111,6 +111,14 @@ export default function ProjectsSection() {
 
   const yTitle = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(typeof window !== "undefined" && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches));
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (activeProject) {
       document.body.style.overflow = "hidden";
@@ -126,7 +134,7 @@ export default function ProjectsSection() {
     <section ref={containerRef} id="projects" className="w-full py-32 bg-transparent relative border-t border-glass-border min-h-screen">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        <motion.div style={{ y: yTitle }} className="mb-20">
+        <motion.div style={mounted && isMobile ? {} : { y: yTitle }} className="mb-20">
           <h2 className="text-4xl md:text-6xl font-bold font-heading mb-6 text-white">
             <TextReveal text="Engineering" delay={0.1} /> <br />
             <TextReveal 

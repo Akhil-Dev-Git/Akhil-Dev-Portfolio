@@ -31,12 +31,18 @@ export function TextReveal({
     }),
   };
 
+  const [isMobile, setIsMobile] = React.useState(false);
+  
+  React.useEffect(() => {
+    setIsMobile(typeof window !== "undefined" && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches));
+  }, []);
+
   const child: Variants = {
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      filter: "blur(0px)",
+      filter: isMobile ? "none" : "blur(0px)",
       transition: {
         type: "spring",
         damping: 12,
@@ -46,9 +52,9 @@ export function TextReveal({
     },
     hidden: {
       opacity: 0,
-      y: 40,
-      scale: 0.9,
-      filter: "blur(8px)",
+      y: isMobile ? 20 : 40,
+      scale: isMobile ? 1 : 0.9,
+      filter: isMobile ? "none" : "blur(8px)",
       transition: {
         type: "spring",
         damping: 12,

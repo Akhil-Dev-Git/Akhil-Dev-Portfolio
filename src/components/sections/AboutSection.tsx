@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Brain, Cpu, Rocket, Target, Zap, Sparkles, Shield, Activity, Infinity, Layers } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TextReveal } from "../ui/TextReveal";
 
 const timeline = [
@@ -37,6 +37,14 @@ export default function AboutSection() {
 
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(typeof window !== "undefined" && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches));
+    setMounted(true);
+  }, []);
+
   return (
     <section ref={containerRef} id="about" className="relative w-full py-32 bg-transparent overflow-hidden border-t border-glass-border">
       {/* Background Decor */}
@@ -46,7 +54,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header / About Me - Full Viewport Height */}
-        <motion.div style={{ y: y3 }} className="min-h-[90vh] flex flex-col justify-center mb-32 md:w-4/5">
+        <motion.div style={mounted && isMobile ? {} : { y: y3 }} className="min-h-[90vh] flex flex-col justify-center mb-32 md:w-4/5">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading mb-8 text-white">
             <TextReveal text="The Journey of" delay={0.1} /> <br />
             <TextReveal 
