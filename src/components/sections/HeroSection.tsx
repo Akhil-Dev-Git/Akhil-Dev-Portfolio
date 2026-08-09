@@ -103,7 +103,7 @@ export default function HeroSection() {
           </motion.div>
 
           <div className="mb-4 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-heading text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-            <TextReveal text="AKHIL DEV" delay={0.2} stagger={0.05} />
+            <TextReveal text="P AKHIL DEV" delay={0.2} stagger={0.05} />
           </div>
 
           <motion.div
