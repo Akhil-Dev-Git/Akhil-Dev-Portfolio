@@ -163,7 +163,14 @@ export default function HeroSection() {
             className="flex flex-wrap items-center gap-4"
           >
             <MagneticButton>
-              <a href="mailto:akhildev6281@gmail.com" className="flex items-center gap-2 px-8 py-4 text-sm font-bold text-white transition-all rounded-full bg-accent hover:bg-accent-secondary shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_40px_rgba(255,122,0,0.5)] uppercase tracking-wider">
+              <a 
+                href="mailto:akhildev6281@gmail.com" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = "mailto:akhildev6281@gmail.com";
+                }}
+                className="flex items-center gap-2 px-8 py-4 text-sm font-bold text-white transition-all rounded-full bg-accent hover:bg-accent-secondary shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_40px_rgba(255,122,0,0.5)] uppercase tracking-wider"
+              >
                 <Mail className="w-4 h-4" />
                 Mail Me
               </a>

@@ -81,6 +81,10 @@ export default function Navbar() {
         <MagneticButton>
           <a
             href="mailto:akhildev6281@gmail.com"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "mailto:akhildev6281@gmail.com";
+            }}
             className="px-5 py-2 text-sm font-bold text-white transition-all rounded-full bg-accent border border-accent hover:bg-accent-secondary hover:shadow-[0_0_20px_rgba(255,122,0,0.4)] tracking-wide uppercase"
           >
             Mail Me
