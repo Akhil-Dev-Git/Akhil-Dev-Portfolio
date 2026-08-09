@@ -93,7 +93,7 @@ export default function HeroSection() {
         
         {/* Left Column: Text & Buttons */}
         <motion.div 
-          style={{ y: yText, opacity }}
+          style={mounted && isMobile ? {} : { y: yText, opacity }}
           className="flex flex-col items-start text-left order-2 lg:order-1"
         >
           
@@ -225,7 +225,8 @@ export default function HeroSection() {
               scale: 0.95, 
               rotate: -2, 
               boxShadow: "0px 0px 80px rgba(255, 122, 0, 0.8)",
-              borderColor: "rgba(255, 122, 0, 0.5)"
+              borderColor: "rgba(255, 122, 0, 0.5)",
+              transition: { duration: 0.1 }
             }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
