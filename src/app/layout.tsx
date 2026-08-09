@@ -23,8 +23,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Akhil Dev | AI Engineer & Full Stack Developer",
-  description: "Portfolio of Akhil Dev, an AI Engineer and Full-Stack Developer building intelligent products and luxury web experiences.",
+  title: "P Akhil Dev | AI Engineer & Full Stack Developer",
+  description: "Portfolio of P Akhil Dev, an AI Engineer and Full-Stack Developer building intelligent products and luxury web experiences.",
 };
 
 export default function RootLayout({

@@ -24,7 +24,7 @@ export default function Footer() {
               </span>
             </div>
             <span className="text-xl font-bold font-heading text-white tracking-wider">
-              AKHIL DEV
+              P AKHIL DEV
             </span>
           </motion.div>
           <p className="text-sm text-text-muted font-light">
