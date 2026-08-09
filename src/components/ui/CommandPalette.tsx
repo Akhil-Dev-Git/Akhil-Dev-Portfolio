@@ -70,7 +70,7 @@ export default function CommandPalette() {
     
     { id: "resume", name: "Download Resume", icon: <FileText className="w-4 h-4" />, action: () => { window.open("/resume.pdf", "_blank"); setIsOpen(false); }, section: "Actions" },
     { id: "github", name: "GitHub", icon: <Github className="w-4 h-4" />, action: () => { window.open("https://github.com/", "_blank"); setIsOpen(false); }, section: "Social" },
-    { id: "linkedin", name: "LinkedIn", icon: <Linkedin className="w-4 h-4" />, action: () => { window.open("https://linkedin.com/", "_blank"); setIsOpen(false); }, section: "Social" },
+    { id: "linkedin", name: "LinkedIn", icon: <Linkedin className="w-4 h-4" />, action: () => { window.open("https://www.linkedin.com/in/akhil-dev-631a972a3/", "_blank"); setIsOpen(false); }, section: "Social" },
   ];
 
   const filteredCommands = commands.filter((command) =>
