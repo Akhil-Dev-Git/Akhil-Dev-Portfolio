@@ -10,28 +10,12 @@ export default function CustomCursor() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMobile(typeof window !== "undefined" && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches));
-  }, []);
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent | TouchEvent) => {
-      if (isMobile) return;
-      let clientX, clientY;
-      
-      if ('touches' in e) {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-      } else {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      }
-      
-      cursorX.set(clientX);
-      cursorY.set(clientY);
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
 
-    const handleMouseOver = (e: MouseEvent | TouchEvent) => {
-      if (isMobile) return;
+    const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
         target.tagName.toLowerCase() === "button" ||
@@ -46,28 +30,20 @@ export default function CustomCursor() {
       }
     };
 
-    if (!isMobile) {
-      window.addEventListener("mousemove", moveCursor);
-      window.addEventListener("mouseover", handleMouseOver);
-      window.addEventListener("touchmove", moveCursor);
-      window.addEventListener("touchstart", moveCursor);
-    }
+    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
-      if (!isMobile) {
-        window.removeEventListener("mousemove", moveCursor);
-        window.removeEventListener("mouseover", handleMouseOver);
-        window.removeEventListener("touchmove", moveCursor);
-        window.removeEventListener("touchstart", moveCursor);
-      }
+      window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [cursorX, cursorY, isMobile]);
+  }, [cursorX, cursorY]);
 
   if (isMobile) return null;
 
   return (
     <motion.div
-      className="fixed top-0 left-0 -ml-3 -mt-3 pointer-events-none z-[99999] flex items-center justify-center"
+      className="hidden md:flex fixed top-0 left-0 -ml-3 -mt-3 pointer-events-none z-[99999] items-center justify-center"
       style={{
         x: cursorX,
         y: cursorY,
