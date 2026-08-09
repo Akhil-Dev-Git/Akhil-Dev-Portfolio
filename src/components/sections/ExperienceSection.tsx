@@ -38,8 +38,8 @@ export default function ExperienceSection() {
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="mb-24 text-center overflow-hidden">
           <motion.h2 
-            initial={{ y: mounted && isMobile ? 0 : "100%", opacity: mounted && isMobile ? 0 : 1 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
             className="text-4xl md:text-5xl font-bold font-heading mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-accent-purple to-pink-500"

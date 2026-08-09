@@ -224,7 +224,7 @@ export default function HeroSection() {
             onTouchEnd={() => setIsPhotoTouched(false)}
             onTouchCancel={() => setIsPhotoTouched(false)}
             className={`relative z-10 w-[85%] lg:w-[80%] aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-glass-border transition-all duration-700 group ${isPhotoTouched ? 'grayscale-0' : 'grayscale hover:grayscale-0'}`}
-            animate={{ y: [0, -15, 0] }}
+            animate={{ y: [0, -15, 0], rotate: 0, scale: 1 }}
             whileTap={{ 
               scale: 0.95, 
               rotate: -2, 
