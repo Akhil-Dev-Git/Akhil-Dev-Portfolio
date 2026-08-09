@@ -7,9 +7,15 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(typeof window !== "undefined" && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches));
+  }, []);
+
   useEffect(() => {
     const moveCursor = (e: MouseEvent | TouchEvent) => {
+      if (isMobile) return;
       let clientX, clientY;
       
       if ('touches' in e) {
@@ -25,6 +31,7 @@ export default function CustomCursor() {
     };
 
     const handleMouseOver = (e: MouseEvent | TouchEvent) => {
+      if (isMobile) return;
       const target = e.target as HTMLElement;
       if (
         target.tagName.toLowerCase() === "button" ||
@@ -39,18 +46,24 @@ export default function CustomCursor() {
       }
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("touchmove", moveCursor);
-    window.addEventListener("touchstart", moveCursor);
+    if (!isMobile) {
+      window.addEventListener("mousemove", moveCursor);
+      window.addEventListener("mouseover", handleMouseOver);
+      window.addEventListener("touchmove", moveCursor);
+      window.addEventListener("touchstart", moveCursor);
+    }
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("mouseover", handleMouseOver);
-      window.removeEventListener("touchmove", moveCursor);
-      window.removeEventListener("touchstart", moveCursor);
+      if (!isMobile) {
+        window.removeEventListener("mousemove", moveCursor);
+        window.removeEventListener("mouseover", handleMouseOver);
+        window.removeEventListener("touchmove", moveCursor);
+        window.removeEventListener("touchstart", moveCursor);
+      }
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <motion.div

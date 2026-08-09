@@ -60,7 +60,13 @@ export default function HeroSection() {
   const yText = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setIsMobile(typeof window !== "undefined" && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches));
+    setMounted(true);
+    
     const interval = setInterval(() => {
       setTitleIndex((prev) => (prev + 1) % TITLES.length);
     }, 3000);
@@ -71,14 +77,16 @@ export default function HeroSection() {
     <section ref={containerRef} id="home" className="relative w-full min-h-screen overflow-hidden flex flex-col justify-center bg-transparent">
       {/* 3D Background with Parallax */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 z-0 opacity-40">
-        <Canvas camera={{ position: [0, 0, 10], fov: 75 }}>
-          <ambientLight intensity={0.2} />
-          {/* Orange rim light effect */}
-          <pointLight position={[10, 10, 10]} color="#FF7A00" intensity={2} />
-          <pointLight position={[-10, -10, -10]} color="#FFA347" intensity={1} />
-          <Particles count={400} />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.3} />
-        </Canvas>
+        {!isMobile && mounted && (
+          <Canvas camera={{ position: [0, 0, 10], fov: 75 }}>
+            <ambientLight intensity={0.2} />
+            {/* Orange rim light effect */}
+            <pointLight position={[10, 10, 10]} color="#FF7A00" intensity={2} />
+            <pointLight position={[-10, -10, -10]} color="#FFA347" intensity={1} />
+            <Particles count={400} />
+            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.3} />
+          </Canvas>
+        )}
       </motion.div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 pt-24 pb-12">

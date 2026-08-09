@@ -38,7 +38,7 @@ export default function ExperienceNode({ item, index }: ExperienceNodeProps) {
         <div className="relative group rounded-2xl p-[1px] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/30 via-accent-purple/30 to-accent-blue/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className="relative p-8 rounded-2xl bg-white/90 backdrop-blur-xl border border-gray-200 shadow-sm group-hover:border-gray-300 group-hover:shadow-md transition-all duration-500 z-10 overflow-hidden">
+          <div className="relative p-8 rounded-2xl bg-white md:bg-white/90 backdrop-blur-none md:backdrop-blur-xl border border-gray-200 shadow-sm group-hover:border-gray-300 group-hover:shadow-md transition-all duration-500 z-10 overflow-hidden">
             
             {/* Hover Spotlight */}
             <div className="absolute -inset-20 bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 opacity-0 group-hover:opacity-100 blur-[50px] transition-opacity duration-1000 -z-10" />
