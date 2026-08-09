@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion, Variants } from "framer-motion";
 import { cn } from "@/utils/cn";
 
@@ -22,8 +23,6 @@ export function TextReveal({
 }: TextRevealProps) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Component = as as any;
-  const characters = text.split("");
-
   const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i: number = 1) => ({
@@ -60,22 +59,29 @@ export function TextReveal({
   };
 
   return (
-    <Component className={cn("inline-flex overflow-hidden", className)}>
+    <Component className={cn("inline-block overflow-hidden", className)}>
       <motion.span
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        className="flex flex-wrap whitespace-pre"
+        className="inline-block"
       >
-        {characters.map((char, index) => (
-          <motion.span
-            variants={child}
-            key={index}
-            className="inline-block"
-          >
-            {char}
-          </motion.span>
+        {text.split(" ").map((word, wordIndex, wordsArray) => (
+          <React.Fragment key={wordIndex}>
+            <span className="inline-block whitespace-nowrap">
+              {word.split("").map((char, charIndex) => (
+                <motion.span
+                  variants={child}
+                  key={charIndex}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
+            {wordIndex !== wordsArray.length - 1 && " "}
+          </React.Fragment>
         ))}
       </motion.span>
     </Component>
