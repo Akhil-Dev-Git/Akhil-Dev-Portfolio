@@ -136,12 +136,25 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+    
+    // Construct the email body
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+    
+    // Open default mail client
+    window.location.href = `mailto:akhildev6281@gmail.com?subject=${encodeURIComponent(subject as string)}&body=${body}`;
+    
     setFormState('submitting');
-    // Simulate form submission
     setTimeout(() => {
       setFormState('success');
       setTimeout(() => setFormState('idle'), 3000);
-    }, 1500);
+      (e.target as HTMLFormElement).reset();
+    }, 800);
   };
 
   return (
@@ -231,7 +244,8 @@ export default function ContactSection() {
                   <label htmlFor="name" className="text-sm font-bold text-text-muted uppercase tracking-wider">Name</label>
                   <input 
                     type="text" 
-                    id="name" 
+                    id="name"
+                    name="name"
                     required
                     className="w-full bg-surface border border-glass-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors placeholder:text-text-muted/50"
                     placeholder="John Doe"
@@ -242,6 +256,7 @@ export default function ContactSection() {
                   <input 
                     type="email" 
                     id="email" 
+                    name="email"
                     required
                     className="w-full bg-surface border border-glass-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors placeholder:text-text-muted/50"
                     placeholder="john@example.com"
@@ -253,7 +268,8 @@ export default function ContactSection() {
                 <label htmlFor="subject" className="text-sm font-bold text-text-muted uppercase tracking-wider">Subject</label>
                 <input 
                   type="text" 
-                  id="subject" 
+                  id="subject"
+                  name="subject"
                   required
                   className="w-full bg-surface border border-glass-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors placeholder:text-text-muted/50"
                   placeholder="AI Integration Project"
@@ -263,7 +279,8 @@ export default function ContactSection() {
               <div className="flex flex-col gap-2">
                 <label htmlFor="message" className="text-sm font-bold text-text-muted uppercase tracking-wider">Message</label>
                 <textarea 
-                  id="message" 
+                  id="message"
+                  name="message"
                   required
                   rows={5}
                   className="w-full bg-surface border border-glass-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors placeholder:text-text-muted/50 resize-none"
