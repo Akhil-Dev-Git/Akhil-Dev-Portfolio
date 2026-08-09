@@ -81,19 +81,17 @@ export default function AnimatedDataStream() {
         ctx.moveTo(p.x, p.y - p.length);
         ctx.lineTo(p.x, p.y);
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = p.width;
         ctx.lineCap = "round";
-        
-        // Add subtle glow to the head of the stream
+        // Add subtle glow using a thicker transparent stroke instead of expensive shadowBlur
         if (p.width > 1) {
-          ctx.shadowBlur = 15;
-          ctx.shadowColor = "rgba(255, 122, 0, 0.6)";
-        } else {
-          ctx.shadowBlur = 0;
+          ctx.lineWidth = p.width * 4;
+          ctx.strokeStyle = `rgba(255, 122, 0, ${p.opacity * 0.3})`;
+          ctx.stroke();
         }
         
+        ctx.lineWidth = p.width;
+        ctx.strokeStyle = gradient;
         ctx.stroke();
-        ctx.shadowBlur = 0;
       });
 
       animationFrameId = requestAnimationFrame(render);

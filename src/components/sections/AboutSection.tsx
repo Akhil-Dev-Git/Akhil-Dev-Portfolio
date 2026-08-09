@@ -35,15 +35,13 @@ export default function AboutSection() {
     offset: ["start end", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
     <section ref={containerRef} id="about" className="relative w-full py-32 bg-transparent overflow-hidden border-t border-glass-border">
       {/* Background Decor */}
-      <motion.div style={{ y: y1 }} className="absolute top-0 right-0 w-1/3 h-[500px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
-      <motion.div style={{ y: y2 }} className="absolute bottom-0 left-0 w-1/3 h-[500px] bg-accent-secondary/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/3 h-[500px] bg-accent-secondary/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         

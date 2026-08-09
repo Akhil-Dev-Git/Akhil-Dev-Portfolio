@@ -1,17 +1,24 @@
 "use client";
 /* eslint-disable react-hooks/purity */
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 export default function Particles({ count = 500 }: { count?: number }) {
   const mesh = useRef<THREE.InstancedMesh>(null);
   
+  const [actualCount] = useState(() => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) {
+      return Math.min(count, 150);
+    }
+    return count;
+  });
+
   const dummy = useMemo(() => new THREE.Object3D(), []);
   const particles = useMemo(() => {
     const temp = [];
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < actualCount; i++) {
       const t = Math.random() * 100;
       const factor = 20 + Math.random() * 100;
       const speed = 0.01 + Math.random() / 200;
@@ -21,7 +28,7 @@ export default function Particles({ count = 500 }: { count?: number }) {
       temp.push({ t, factor, speed, xFactor, yFactor, zFactor, mx: 0, my: 0 });
     }
     return temp;
-  }, [count]);
+  }, [actualCount]);
 
   useFrame(() => {
     particles.forEach((particle, i) => {
@@ -50,8 +57,8 @@ export default function Particles({ count = 500 }: { count?: number }) {
   });
 
   return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
-      <sphereGeometry args={[0.05, 16, 16]} />
+    <instancedMesh ref={mesh} args={[undefined, undefined, actualCount]}>
+      <sphereGeometry args={[0.05, 4, 4]} />
       <meshBasicMaterial color="#3B82F6" transparent opacity={0.6} />
     </instancedMesh>
   );
