@@ -15,8 +15,8 @@ const projects = [
     year: "2024",
     image: "/project-trip.jpg", // Placeholder
     hasDemo: true,
+    hasGithub: false,
     demoUrl: "https://akhil-dev-git.github.io/AI-Trip-Planner/",
-    githubUrl: "https://github.com/akhil-dev-git/AI-Trip-Planner",
     tech: ["Next.js", "OpenAI", "TailwindCSS", "PostgreSQL"],
     caseStudy: {
       problem: "Planning trips requires countless hours of cross-referencing flights, hotels, and activities.",
@@ -33,6 +33,7 @@ const projects = [
     year: "2024",
     image: "/project-threat.jpg",
     hasDemo: false,
+    hasGithub: true,
     demoUrl: "#",
     githubUrl: "https://github.com/akhil-dev-git/Threat-Detection",
     tech: ["Python", "TensorFlow", "Kafka", "React"],
@@ -51,6 +52,7 @@ const projects = [
     year: "2023",
     image: "/project-posture.jpg",
     hasDemo: false,
+    hasGithub: true,
     demoUrl: "#",
     githubUrl: "https://github.com/akhil-dev-git/posture-detection",
     tech: ["OpenCV", "MediaPipe", "Python"],
@@ -69,6 +71,7 @@ const projects = [
     year: "2024",
     image: "/project-futura.jpg",
     hasDemo: false,
+    hasGithub: true,
     demoUrl: "#",
     githubUrl: "https://github.com/akhil-dev-git/FUTURA-AI",
     tech: ["React Native", "PyTorch", "Whisper", "Node.js"],
@@ -87,8 +90,8 @@ const projects = [
     year: "2023",
     image: "/project-jewels.jpg",
     hasDemo: true,
+    hasGithub: false,
     demoUrl: "https://akhil-dev-git.github.io/AD-JEWELS/",
-    githubUrl: "https://github.com/akhil-dev-git/AD-JEWELS",
     tech: ["Next.js", "Three.js", "Stripe", "Sanity CMS"],
     caseStudy: {
       problem: "High return rates for online jewelry purchases due to sizing and styling uncertainty.",
@@ -274,20 +277,22 @@ export default function ProjectsSection() {
                       Live Demo <ArrowUpRight className="w-4 h-4" />
                     </a>
                   )}
-                  <a 
-                    href={activeProject.githubUrl || "#"} 
-                    target={activeProject.githubUrl && activeProject.githubUrl !== "#" ? "_blank" : undefined} 
-                    rel={activeProject.githubUrl && activeProject.githubUrl !== "#" ? "noopener noreferrer" : undefined} 
-                    onClick={(e) => {
-                      if (!activeProject.githubUrl || activeProject.githubUrl === "#") {
-                        e.preventDefault();
-                        alert("GitHub repository link is pending. Please check back later!");
-                      }
-                    }}
-                    className="flex items-center gap-2 text-sm font-bold text-white px-6 py-3 rounded-full bg-cards border border-glass-border hover:bg-white/10 transition-colors uppercase tracking-wider"
-                  >
-                    GitHub <Github className="w-4 h-4" />
-                  </a>
+                  {activeProject.hasGithub !== false && (
+                    <a 
+                      href={activeProject.githubUrl || "#"} 
+                      target={activeProject.githubUrl && activeProject.githubUrl !== "#" ? "_blank" : undefined} 
+                      rel={activeProject.githubUrl && activeProject.githubUrl !== "#" ? "noopener noreferrer" : undefined} 
+                      onClick={(e) => {
+                        if (!activeProject.githubUrl || activeProject.githubUrl === "#") {
+                          e.preventDefault();
+                          alert("GitHub repository link is pending. Please check back later!");
+                        }
+                      }}
+                      className="flex items-center gap-2 text-sm font-bold text-white px-6 py-3 rounded-full bg-cards border border-glass-border hover:bg-white/10 transition-colors uppercase tracking-wider"
+                    >
+                      GitHub <Github className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
