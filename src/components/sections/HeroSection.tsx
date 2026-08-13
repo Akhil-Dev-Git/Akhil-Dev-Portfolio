@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import MagneticButton from "../ui/MagneticButton";
 import { useState, useEffect, useRef } from "react";
 import { FileText, ArrowRight, Mail } from "lucide-react";
-import { GithubIcon as Github, LinkedinIcon as Linkedin, UpworkIcon as Upwork } from "../ui/Icons";
+import { LinkedinIcon as Linkedin, UpworkIcon as Upwork } from "../ui/Icons";
 import { TextReveal } from "../ui/TextReveal";
 import Image from "next/image";
 
@@ -197,11 +197,7 @@ export default function HeroSection() {
                 <FileText className="w-5 h-5" />
               </a>
             </MagneticButton>
-            <MagneticButton>
-              <a href="https://github.com" target="_blank" className="flex items-center justify-center w-12 h-12 rounded-full bg-glass border border-glass-border text-text-secondary hover:text-white hover:border-white/20 transition-all">
-                <Github className="w-5 h-5" />
-              </a>
-            </MagneticButton>
+
             <MagneticButton>
               <a href="https://www.linkedin.com/in/akhil-dev-631a972a3/" target="_blank" className="flex items-center justify-center w-12 h-12 rounded-full bg-glass border border-glass-border text-text-secondary hover:text-white hover:border-white/20 transition-all">
                 <Linkedin className="w-5 h-5" />
