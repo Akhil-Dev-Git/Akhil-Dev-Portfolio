@@ -8,71 +8,79 @@ import * as THREE from "three";
 import { Send, MapPin, Globe, CheckCircle2, Clock } from "lucide-react";
 import MagneticButton from "../ui/MagneticButton";
 
-// Algorithmic Network Globe Component
-function AlgorithmicNetwork() {
-  const pointsRef = useRef<THREE.Points>(null);
-  const linesRef = useRef<THREE.LineSegments>(null);
-  const coreRef = useRef<THREE.Mesh>(null);
+// Neural Core Component - Represents AI & Tech focus
+function NeuralCore() {
+  const coreRef = useRef<THREE.Group>(null);
+  const ringsRef = useRef<THREE.Group>(null);
+  const particlesRef = useRef<THREE.Points>(null);
   
-  const particleCount = 250;
+  const particleCount = 200;
   
-  const [positions, lines] = useMemo(() => {
+  const positions = useMemo(() => {
     const pos = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount; i++) {
-      // Golden ratio spiral for even distribution on a sphere
-      const phi = Math.acos(-1 + (2 * i) / particleCount);
-      const theta = Math.sqrt(particleCount * Math.PI) * phi;
-      const r = 2.4;
-      
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      pos[i * 3 + 2] = r * Math.cos(phi);
+      pos[i * 3] = (Math.random() - 0.5) * 8;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 8;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
     }
-
-    const lineIndices = [];
-    for (let i = 0; i < particleCount; i++) {
-      for (let j = i + 1; j < particleCount; j++) {
-        const dx = pos[i * 3] - pos[j * 3];
-        const dy = pos[i * 3 + 1] - pos[j * 3 + 1];
-        const dz = pos[i * 3 + 2] - pos[j * 3 + 2];
-        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        
-        // Connect nodes that are close to each other
-        if (dist < 1.1) {
-          lineIndices.push(i, j);
-        }
-      }
-    }
-    
-    return [pos, new Uint16Array(lineIndices)];
+    return pos;
   }, []);
 
   useFrame((state, delta) => {
     const time = state.clock.elapsedTime;
-    const rotSpeed = 0.15;
-    
-    if (pointsRef.current && linesRef.current) {
-      // Rotate the entire network
-      pointsRef.current.rotation.y += delta * rotSpeed;
-      pointsRef.current.rotation.x = Math.sin(time * 0.2) * 0.1;
-      
-      linesRef.current.rotation.y += delta * rotSpeed;
-      linesRef.current.rotation.x = Math.sin(time * 0.2) * 0.1;
-
-      // Pulsating effect for the network lines
-      (linesRef.current.material as THREE.LineBasicMaterial).opacity = 0.1 + Math.sin(time * 2) * 0.08;
-    }
     
     if (coreRef.current) {
-      coreRef.current.rotation.y -= delta * 0.05;
-      coreRef.current.rotation.z = Math.cos(time * 0.1) * 0.2;
+      coreRef.current.rotation.x = time * 0.15;
+      coreRef.current.rotation.y = time * 0.2;
+    }
+    
+    if (ringsRef.current) {
+      ringsRef.current.rotation.x = Math.sin(time * 0.2) * 0.3;
+      ringsRef.current.rotation.y = time * 0.1;
+    }
+    
+    if (particlesRef.current) {
+      particlesRef.current.rotation.y = time * 0.05;
+      particlesRef.current.rotation.x = Math.sin(time * 0.1) * 0.1;
     }
   });
 
   return (
     <group>
-      {/* Node Particles */}
-      <points ref={pointsRef}>
+      {/* Central Neural Node (Icosahedron) */}
+      <group ref={coreRef}>
+        <mesh>
+          <icosahedronGeometry args={[1.4, 0]} />
+          <meshBasicMaterial color="#050505" />
+        </mesh>
+        <mesh scale={1.05}>
+          <icosahedronGeometry args={[1.4, 1]} />
+          <meshBasicMaterial color="#FF7A00" wireframe transparent opacity={0.15} />
+        </mesh>
+        <mesh scale={1.15}>
+          <icosahedronGeometry args={[1.4, 0]} />
+          <meshBasicMaterial color="#FF7A00" wireframe transparent opacity={0.5} />
+        </mesh>
+      </group>
+      
+      {/* Orbital Data Rings */}
+      <group ref={ringsRef}>
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[2.2, 0.01, 16, 100]} />
+          <meshBasicMaterial color="#FF7A00" transparent opacity={0.4} />
+        </mesh>
+        <mesh rotation={[0, Math.PI / 2, 0]}>
+          <torusGeometry args={[2.6, 0.01, 16, 100]} />
+          <meshBasicMaterial color="#FF7A00" transparent opacity={0.2} />
+        </mesh>
+        <mesh rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+          <torusGeometry args={[3.0, 0.01, 16, 100]} />
+          <meshBasicMaterial color="#FF7A00" transparent opacity={0.1} />
+        </mesh>
+      </group>
+
+      {/* Floating Data Particles */}
+      <points ref={particlesRef}>
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
@@ -80,35 +88,8 @@ function AlgorithmicNetwork() {
             count={positions.length / 3}
           />
         </bufferGeometry>
-        <pointsMaterial size={0.04} color="#FF7A00" transparent opacity={0.9} sizeAttenuation />
+        <pointsMaterial size={0.05} color="#FF7A00" transparent opacity={0.6} sizeAttenuation />
       </points>
-      
-      {/* Neural Connection Lines */}
-      <lineSegments ref={linesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            args={[positions, 3]}
-            count={positions.length / 3}
-          />
-          <bufferAttribute
-            attach="index"
-            args={[lines, 1]}
-            count={lines.length}
-          />
-        </bufferGeometry>
-        <lineBasicMaterial color="#FF7A00" transparent opacity={0.15} />
-      </lineSegments>
-      
-      {/* Dark Void Core */}
-      <Sphere args={[2.2, 32, 32]}>
-        <meshBasicMaterial color="#050505" />
-      </Sphere>
-      
-      {/* Subtle Inner Glow */}
-      <Sphere ref={coreRef} args={[2.3, 24, 24]}>
-        <meshBasicMaterial color="#FF7A00" transparent opacity={0.03} wireframe />
-      </Sphere>
     </group>
   );
 }
@@ -162,7 +143,7 @@ export default function ContactSection() {
       
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
-        {/* Left: Contact Info & Globe */}
+        {/* Left: Contact Info & Neural Core */}
         <div className="flex flex-col">
           <motion.div 
             initial={{ opacity: 0, x: -100 }}
@@ -209,7 +190,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* 3D Globe Container */}
+          {/* 3D Neural Core Container */}
           <motion.div 
             initial={{ opacity: 0, x: -100, scale: 0.9 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -220,7 +201,7 @@ export default function ContactSection() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,122,0,0.1)_0%,transparent_70%)] pointer-events-none" />
             <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
               <ambientLight intensity={0.5} />
-              <AlgorithmicNetwork />
+              <NeuralCore />
               <OrbitControls enableZoom={false} enablePan={false} />
             </Canvas>
           </motion.div>

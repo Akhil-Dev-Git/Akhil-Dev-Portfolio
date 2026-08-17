@@ -6,7 +6,7 @@ import Link from "next/link";
 import MagneticButton from "../ui/MagneticButton";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "/" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
@@ -53,7 +53,7 @@ export default function Navbar() {
             : "bg-transparent border-transparent"
         }`}
       >
-        <Link href="#home" className="flex items-center group relative">
+        <Link href="/" className="flex items-center group relative">
           <div className="absolute inset-0 bg-accent/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="relative flex items-center justify-center w-10 h-10 rounded-full border border-glass-border bg-cards/90 md:bg-cards/50 backdrop-blur-none md:backdrop-blur-md group-hover:border-accent/50 transition-all">
             <span className="text-lg font-bold font-heading tracking-tighter">
