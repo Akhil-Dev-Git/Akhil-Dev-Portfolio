@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 const skillCategories = [
   {
     title: "Programming Languages",
-    skills: ["Python", "TypeScript", "JavaScript", "C++", "Java", "SQL", "Go", "Rust", "R"]
+    skills: ["Python", "TypeScript", "JavaScript", "C++", "Java", "SQL"]
   },
   {
     title: "Frontend Development",
-    skills: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Three.js", "Redux", "Zustand", "GSAP"]
+    skills: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Three.js", "GSAP"]
   },
   {
     title: "Backend & APIs",
