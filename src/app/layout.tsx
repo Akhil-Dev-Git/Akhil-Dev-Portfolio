@@ -24,8 +24,26 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://akhil-dev-portfolio.vercel.app"),
   title: "P Akhil Dev | AI Engineer & Full Stack Developer",
   description: "Portfolio of P Akhil Dev, an AI Engineer and Full-Stack Developer building intelligent products and luxury web experiences.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google6f21b1973506728d",
+  },
 };
 
 export default function RootLayout({
