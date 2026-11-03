@@ -25,12 +25,10 @@ export default function Footer() {
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold font-heading text-white tracking-wider leading-tight">
+              <span className="text-xl font-bold font-heading text-white tracking-wider leading-tight">
                 P AKHIL DEV
               </span>
-              <span className="text-xs font-mono text-accent font-semibold tracking-widest">
-                PAKHILDEV
-              </span>
+              <span className="sr-only">PAKHILDEV</span>
             </div>
             <a
               href="https://www.linkedin.com/in/adp-groups/"
@@ -43,7 +41,7 @@ export default function Footer() {
             </a>
           </motion.div>
           <p className="text-xs text-text-muted font-light">
-            © {new Date().getFullYear()} P Akhil Dev (PAKHILDEV). All rights reserved.
+            © {new Date().getFullYear()} P Akhil Dev. All rights reserved.
           </p>
         </div>
 

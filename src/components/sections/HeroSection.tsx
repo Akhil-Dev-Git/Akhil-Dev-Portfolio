@@ -106,8 +106,8 @@ export default function HeroSection() {
             variants={leftVariants}
             className="mb-2"
           >
-            <span className="text-text-muted font-mono tracking-wider text-sm md:text-base uppercase flex items-center gap-2">
-              Hello, I&apos;m <span className="text-accent font-mono font-bold tracking-widest text-xs px-2 py-0.5 rounded bg-accent/10 border border-accent/20">PAKHILDEV</span>
+            <span className="text-text-muted font-mono tracking-wider text-sm md:text-base uppercase">
+              Hello, I&apos;m <span className="sr-only">PAKHILDEV</span>
             </span>
           </motion.div>
 
