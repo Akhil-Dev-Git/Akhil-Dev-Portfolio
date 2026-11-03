@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { LinkedinIcon as Linkedin } from "@/components/ui/Icons";
 
 export default function Footer() {
   return (
@@ -10,8 +11,8 @@ export default function Footer() {
       
       <div className="py-12 max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
         
-        {/* Left: Logo and Copyright */}
-        <div className="flex flex-col items-center md:items-start gap-4">
+        {/* Left: Logo, Name & Copyright */}
+        <div className="flex flex-col items-center md:items-start gap-3">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -23,12 +24,26 @@ export default function Footer() {
                 AD
               </span>
             </div>
-            <span className="text-xl font-bold font-heading text-white tracking-wider">
-              P AKHIL DEV
-            </span>
+            <div className="flex flex-col">
+              <span className="text-lg font-bold font-heading text-white tracking-wider leading-tight">
+                P AKHIL DEV
+              </span>
+              <span className="text-xs font-mono text-accent font-semibold tracking-widest">
+                PAKHILDEV
+              </span>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/adp-groups/"
+              target="_blank"
+              rel="noopener noreferrer me"
+              title="P Akhil Dev on LinkedIn"
+              className="ml-2 flex items-center justify-center w-8 h-8 rounded-full bg-glass border border-glass-border text-text-secondary hover:text-white hover:border-accent/40 transition-all"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
           </motion.div>
-          <p className="text-sm text-text-muted font-light">
-            © {new Date().getFullYear()} All rights reserved.
+          <p className="text-xs text-text-muted font-light">
+            © {new Date().getFullYear()} P Akhil Dev (PAKHILDEV). All rights reserved.
           </p>
         </div>
 

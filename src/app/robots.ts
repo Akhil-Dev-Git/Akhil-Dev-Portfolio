@@ -9,3 +9,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: "https://akhil-dev-portfolio.vercel.app/sitemap.xml",
   };
 }
+

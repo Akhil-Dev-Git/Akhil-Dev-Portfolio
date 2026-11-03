@@ -106,8 +106,8 @@ export default function HeroSection() {
             variants={leftVariants}
             className="mb-2"
           >
-            <span className="text-text-muted font-mono tracking-wider text-sm md:text-base uppercase">
-              Hello, I&apos;m
+            <span className="text-text-muted font-mono tracking-wider text-sm md:text-base uppercase flex items-center gap-2">
+              Hello, I&apos;m <span className="text-accent font-mono font-bold tracking-widest text-xs px-2 py-0.5 rounded bg-accent/10 border border-accent/20">PAKHILDEV</span>
             </span>
           </motion.div>
 
@@ -204,7 +204,13 @@ export default function HeroSection() {
               </a>
             </MagneticButton>
             <MagneticButton>
-              <a href="https://www.linkedin.com/in/akhil-dev-631a972a3/" target="_blank" className="flex items-center justify-center w-12 h-12 rounded-full bg-glass border border-glass-border text-text-secondary hover:text-white hover:border-white/20 transition-all">
+              <a 
+                href="https://www.linkedin.com/in/adp-groups/" 
+                target="_blank" 
+                rel="noopener noreferrer me" 
+                title="P Akhil Dev (PAKHILDEV) on LinkedIn"
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-glass border border-glass-border text-text-secondary hover:text-white hover:border-white/20 transition-all"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </MagneticButton>

@@ -71,7 +71,7 @@ export default function AboutSection() {
             className="text-text-secondary text-lg md:text-xl leading-relaxed space-y-6"
           >
             <p>
-              I am an AI Engineer and Full Stack Developer driven by a singular goal: building intelligent systems that feel indistinguishable from magic. My journey began with a deep fascination for data science, which quickly evolved into a specialized focus on artificial intelligence and modern web architecture.
+              I am P Akhil Dev (known as <strong className="text-white font-semibold">PAKHILDEV</strong>), an AI Engineer and Full Stack Developer driven by a singular goal: building intelligent systems that feel indistinguishable from magic. My journey began with a deep fascination for data science, which quickly evolved into a specialized focus on artificial intelligence and modern web architecture.
             </p>
             <p>
               I don&apos;t just train models in isolated notebooks. I architect end-to-end solutions—from engineering resilient backend pipelines and orchestrating autonomous AI agents, to crafting pixel-perfect, luxury frontend experiences that users love to interact with.
