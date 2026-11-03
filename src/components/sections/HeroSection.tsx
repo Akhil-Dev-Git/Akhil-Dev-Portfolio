@@ -193,7 +193,14 @@ export default function HeroSection() {
             className="flex items-center gap-4 mt-8"
           >
             <MagneticButton>
-              <a href="/resume.pdf" target="_blank" className="flex items-center justify-center w-12 h-12 rounded-full bg-glass border border-glass-border text-text-secondary hover:text-white hover:border-white/20 transition-all">
+              <a 
+                href="/resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                title="View Resume (PDF)"
+                aria-label="View Resume (PDF)"
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-glass border border-glass-border text-text-secondary hover:text-white hover:border-white/20 transition-all"
+              >
                 <FileText className="w-5 h-5" />
               </a>
             </MagneticButton>
