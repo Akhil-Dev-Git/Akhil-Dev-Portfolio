@@ -26,7 +26,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://akhil-dev-portfolio.vercel.app"),
   title: "PAKHILDEV | P Akhil Dev - AI Engineer & Full Stack Developer",
-  description: "Official portfolio of P Akhil Dev (PAKHILDEV) — AI Engineer and Full-Stack Developer specializing in artificial intelligence, autonomous agents, and luxury digital experiences.",
+  description: "Portfolio of P Akhil Dev (PAKHILDEV) — AI Engineer & Full Stack Developer building intelligent AI systems, autonomous agents, and modern web apps.",
   keywords: [
     "PAKHILDEV",
     "pakhildev",
