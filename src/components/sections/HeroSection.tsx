@@ -112,8 +112,10 @@ export default function HeroSection() {
           </motion.div>
 
           <h1 className="mb-4 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-heading text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-            <TextReveal text="P AKHIL DEV" delay={0.2} stagger={0.05} />
-            <span className="sr-only"> - PAKHILDEV | AI Engineer &amp; Full Stack Developer Portfolio</span>
+            <span className="sr-only">P AKHIL DEV (PAKHILDEV) - AI Engineer &amp; Full Stack Developer</span>
+            <span aria-hidden="true">
+              <TextReveal text="P AKHIL DEV" delay={0.2} stagger={0.05} />
+            </span>
           </h1>
 
           <motion.div
