@@ -23,15 +23,9 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
   return (
     <>
       <LoadingScreen onComplete={() => setIsLoading(false)} />
-      {!isLoading && <Navbar />}
+      <Navbar />
       <CommandPalette />
-      <div
-        style={{
-          opacity: isLoading ? 0 : 1,
-          transition: "opacity 0.8s ease-in-out",
-        }}
-        className="relative min-h-screen"
-      >
+      <div className="relative min-h-screen">
         <NetworkBackground />
         
         {children}

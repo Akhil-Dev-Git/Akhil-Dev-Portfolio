@@ -4,6 +4,12 @@ import { useEffect } from "react";
 
 export default function SecurityWrapper({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Skip security restrictions for search engine bots/crawlers
+    if (typeof window !== "undefined") {
+      const isBot = /bot|googlebot|crawler|spider|robot|crawling|bingbot|slurp/i.test(navigator.userAgent);
+      if (isBot) return;
+    }
+
     // Prevent right click / context menu (prevents image long-press menus too)
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();

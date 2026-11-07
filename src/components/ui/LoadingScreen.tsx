@@ -8,6 +8,17 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    // Detect search engine crawlers and bypass the loading screen immediately
+    if (typeof window !== "undefined") {
+      const isBot = /bot|googlebot|crawler|spider|robot|crawling|bingbot|slurp/i.test(navigator.userAgent);
+      if (isBot) {
+        setIsComplete(true);
+        document.body.style.overflow = "auto";
+        onComplete();
+        return;
+      }
+    }
+
     // Prevent scrolling while loading
     document.body.style.overflow = "hidden";
 
