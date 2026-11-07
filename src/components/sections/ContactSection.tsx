@@ -156,7 +156,7 @@ export default function ContactSection() {
             Available For Opportunities
           </motion.div>
           
-          <motion.h2 
+          <motion.h1 
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "0px" }}
@@ -167,7 +167,8 @@ export default function ContactSection() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary">
               Something Extraordinary.
             </span>
-          </motion.h2>
+            <span className="sr-only"> - Contact P Akhil Dev (PAKHILDEV)</span>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, x: -100 }}

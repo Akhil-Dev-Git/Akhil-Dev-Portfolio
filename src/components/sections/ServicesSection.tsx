@@ -28,18 +28,19 @@ export default function ServicesSection() {
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
-            <motion.h2 
+            <motion.h1 
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, margin: "0px" }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6 text-white"
             >
               Services & <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-text-muted to-white">
                 Capabilities.
               </span>
-            </motion.h2>
+              <span className="sr-only"> - P Akhil Dev (PAKHILDEV) Services</span>
+            </motion.h1>
             <motion.p
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
