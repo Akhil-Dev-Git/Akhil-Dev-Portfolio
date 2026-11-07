@@ -28,7 +28,7 @@ export default function ServicesSection() {
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
-            <motion.h1 
+            <motion.h2 
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, margin: "0px" }}
@@ -40,7 +40,7 @@ export default function ServicesSection() {
                 Capabilities.
               </span>
               <span className="sr-only"> - P Akhil Dev (PAKHILDEV) Services</span>
-            </motion.h1>
+            </motion.h2>
             <motion.p
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}

@@ -55,7 +55,7 @@ export default function AboutSection() {
         
         {/* Header / About Me - Full Viewport Height */}
         <motion.div style={mounted && isMobile ? {} : { y: y3 }} className="min-h-[90vh] flex flex-col justify-center mb-32 md:w-4/5">
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading mb-8 text-white">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading mb-8 text-white">
             <TextReveal text="The Journey of" delay={0.1} /> <br />
             <TextReveal 
               text="Engineering Intelligence." 
@@ -63,7 +63,7 @@ export default function AboutSection() {
               className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary" 
             />
             <span className="sr-only"> - About P Akhil Dev (PAKHILDEV)</span>
-          </h1>
+          </h2>
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}

@@ -138,7 +138,7 @@ export default function ProjectsSection() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         <motion.div style={mounted && isMobile ? {} : { y: yTitle }} className="mb-20">
-          <h1 className="text-4xl md:text-6xl font-bold font-heading mb-6 text-white">
+          <h2 className="text-4xl md:text-6xl font-bold font-heading mb-6 text-white">
             <TextReveal text="Engineering" delay={0.1} /> <br />
             <TextReveal 
               text="Case Studies." 
@@ -146,7 +146,7 @@ export default function ProjectsSection() {
               className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary"
             />
             <span className="sr-only"> - P Akhil Dev (PAKHILDEV) Projects</span>
-          </h1>
+          </h2>
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

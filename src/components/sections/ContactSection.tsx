@@ -156,7 +156,7 @@ export default function ContactSection() {
             Available For Opportunities
           </motion.div>
           
-          <motion.h1 
+          <motion.h2 
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "0px" }}
@@ -168,7 +168,7 @@ export default function ContactSection() {
               Something Extraordinary.
             </span>
             <span className="sr-only"> - Contact P Akhil Dev (PAKHILDEV)</span>
-          </motion.h1>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, x: -100 }}
